@@ -1,0 +1,14 @@
+<encountertables>
+
+  <encountertable Name="Deathlands Creatures 1" Load="Merge">
+    <objects>
+      <tableobject Chance="10" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="Jungle" Density="minimum" Load="Merge">
+    <objects>
+      <tableobject Chance="2" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
+    </objects>
+  </encountertable>
+</encountertables>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+  <!--
+    Worgs
+  -->
+  <object Name="LegendaryDogs_Worg_Bite" Inherits="NaturalWeapon">
+    <part Name="Render" DisplayName="bite"></part>
+    <part Name="MeleeWeapon" RenderString="\" PenBonus="0" BaseDamage="4d6" Skill="Axe" Stat="Strength" Slot="Face"></part>
+  </object>
+  <object Name="LegendaryDogs Worg Corpse" Inherits="Corpse">
+    <part Name="Render" DisplayName="worg corpse"></part>
+    <part Name="Description" Short="A hulking mass of fur and blood.  It's not moving.~J211"></part>
+    <part Name="Physics" Weight="240"></part>
+    <part Name="Commerce" Value="1"></part>
+    <tag Name="DynamicObjectsTable:Corpses"></tag>
+  </object>
+  <object Name="LegendaryDogs_Worg" Inherits="BaseDog">
+    <part Name="Render" DisplayName="Worg" Tile="creatures/sw_dog.bmp" RenderString="w" ColorString="&amp;w" DetailColor="R"></part>
+    <part Name="Corpse" CorpseChance="100" CorpseBlueprint="LegendaryDogs Worg Corpse" BodyDrop="false" InventoryDrop="true"></part>
+    <stat Name="Strength" sValue="24,1d6"></stat>
+    <stat Name="Agility" sValue="24,1d6"></stat>
+    <stat Name="Toughness" sValue="24,1d6"></stat>
+    <stat Name="Intelligence" sValue="16,1d4"></stat>
+    <stat Name="Willpower" sValue="18,1d4"></stat>
+    <stat Name="Ego" sValue="18,1d6"></stat>
+    <stat Name="Level" Value="24"></stat>
+    <stat Name="AV" Value="8"></stat>
+    <stat Name="Hitpoints" Value="60"></stat>
+    <stat Name="HeatResistance" Value="20"></stat>
+    <stat Name="ColdResistance" Value="20"></stat>
+    <stat Name="AcidResistance" Value="20"></stat>
+    <stat Name="ElectricResistance" Value="20"></stat>
+    <mutation Name="HeightenedSmell" Level="10" />
+    <skill Name="Axe"></skill>
+    <skill Name="Axe_Cleave"></skill>
+    <skill Name="Axe_Expertise" />
+    <skill Name="Axe_Dismember" />
+    <part Name="RandomMutations" Mental="1d2-1" MentalLevel="1d1"></part>
+    <part Name="Description" Short="You look and see an animal, but you feel a person staring back.  =pronouns.Possessive= red eyes pierce your soul as you feel yourself almost slipping away, pulled deep into a swirling abyss of intelligence so foreign yet familiar and inviting."></part>
+    <inventoryobject Blueprint="LegendaryDogs_Worg_Bite" Number="1"></inventoryobject>
+    <part Name="Swarmer" ExtraBonus="2"></part>
+    <tag Name="DynamicObjectsTable:Deathlands_Creatures"></tag>
+    <tag Name="DynamicObjectsTable:Ruins_Creatures"></tag>
+    <tag Name="PetResponse" Value="growls soothingly" />
+    <part Name="ActivatedAbilities" />
+  </object>
+  <object Name="LegendaryDogs_Worg_Hero" Inherits="LegendaryDogs_Worg">
+    <part Name="Render" RenderString="W" ColorString="&amp;m" DetailColor="R"></part>
+    <part Name="Swarmer" ExtraBonus="4"></part>
+    <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
+    <part Name="GivesRep"></part>
+    <property Name="Role" Value="Hero"></property>
+    <xtagGrammar Proper="true"></xtagGrammar>
+    <part Name="LegendaryDogsWorgPack1"></part>
+    <part Name="LegendaryDogsWorgHero1"></part>
+    <skill Name="Tactics_Charge"></skill>
+    <skill Name="Tactics_Run"></skill>
+    <stat Name="Level" Value="30"></stat>
+    <part Name="RandomMutations" Mental="1d3" MentalLevel="1d1"></part>
+    <part Name="ActivatedAbilities" />
+    <tag Name="PetResponse" Value="gently grabs your hand in =pronouns.possessive= mouth and guides it away" />
+    <tag Name="HeroNameTitleTemplate" Value="*Name*, awe-inspiring *CreatureType*" />
+    <tag Name="HeroNameTitlePariah" Value="Pack-less" />
+    <tag Name="HeroNamePrefixes" Value="be,ba,ta,to,ru,ro,te,ta,da,du,di,do,u,a,i,pu" />
+    <tag Name="HeroNamePrefixAmount" Value="1-2" />
+    <tag Name="HeroNameInfixes" Value="d,dd,m,mm,nn,n,p,pp,g,gg" />
+    <tag Name="HeroNameInfixAmount" Value="1" />
+    <tag Name="HeroNamePostfixes" Value="y,o,a,i,us" />
+    <tag Name="HeroNamePostfixAmount" Value="1" />
+    <tag Name="HeroNameHyphenationChance" Value="0" />
+    <tag Name="HeroTwoNameChance" Value="10" />
+    <stat Name="Hitpoints" Value="300" />
+    <stat Name="Ego" Boost="2"></stat>
+    <stat Name="Intelligence" Boost="1"></stat>
+    <stat Name="Willpower" Boost="1"></stat>
+  </object>
+</objects>

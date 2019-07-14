@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+  <!--
+    Worgs
+  -->
+  <population Name="LegendaryDogsWorgEncounter">
+    <group Style="pickone">
+      <object Chance="100" Number="1d3" Blueprint="LegendaryDogs_Worg" ></object>
+      <object Chance="10" Number="1d1" Blueprint="LegendaryDogs_Worg_Hero" ></object>
+    </group>
+  </population>
+  <population Name="LegendaryDogsWorgHeroInventory">
+    <group Style="pickeach">
+      <object Blueprint="Symbiotic Firefly" Number="1" Chance="50"></object>
+    </group>
+  </population>
+</populations>
