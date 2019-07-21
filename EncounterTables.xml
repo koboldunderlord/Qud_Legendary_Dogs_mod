@@ -1,14 +1,71 @@
 <encountertables>
 
+  <!--
+    Dogs
+  -->
+
+  <encountertable Name="WastesAnimals" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="PlainsAnimals" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="HillsAnimals" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="MountainAnimals" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="TrembleDungeon" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="Cave Critters 1" Load="Merge">
+    <objects>
+      <object Chance="1" Number="1d1" Blueprint="LegendaryDogs_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="Starapple Farm" Load="Merge">
+    <objects>
+      <object Chance="10" Number="1d1" Blueprint="LegendaryDogs_Guard_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <encountertable Name="Pig Farm" Load="Merge">
+    <objects>
+      <object Chance="10" Number="1d1" Blueprint="LegendaryDogs_Herding_Dog"></object>
+    </objects>
+  </encountertable>
+
+  <!--
+    Worgs
+  -->
+
   <encountertable Name="Deathlands Creatures 1" Load="Merge">
     <objects>
       <tableobject Chance="10" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
     </objects>
   </encountertable>
 
-  <encountertable Name="Jungle" Density="minimum" Load="Merge">
+  <encountertable Name="Jungle" Load="Merge">
     <objects>
       <tableobject Chance="2" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
     </objects>
   </encountertable>
+
 </encountertables>

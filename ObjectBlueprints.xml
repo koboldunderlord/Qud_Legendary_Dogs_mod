@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <objects>
   <!--
+    Dogs
+  -->
+  <object Name="LegendaryDogs_Dog" Inherits="Dog">
+    <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
+    <part Name="Swarmer" ExtraBonus="2"></part>
+    <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
+    <stat Name="Hitpoints" Value="80"></stat>
+    <property Name="Role" Value="Hero"></property>
+    <xtagGrammar Proper="true"></xtagGrammar>
+    <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="LegendaryDogsGivesRep"></part>
+    <part Name="LegendaryDogsDogPack1"></part>
+    <stat Name="Level" Value="16"></stat>
+    <part Name="Pettable" useFactionForFeelingFloor="Dogs" />
+    <tag Name="PetResponse" Value="barks happily at you" />
+    <stat Name="Strength" Boost="1"></stat>
+    <stat Name="Agility" Boost="1"></stat>
+    <stat Name="Toughness" Boost="1"></stat>
+    <stat Name="Intelligence" Boost="1"></stat>
+    <stat Name="Willpower" Boost="1"></stat>
+    <stat Name="Ego" Boost="2"></stat>
+    <skill Name="Persuasion_InspiringPresence"></skill>
+  </object>
+
+  <object Name="LegendaryDogs_HerdingDog" Inherits="Herding Dog">
+    <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
+    <part Name="Swarmer" ExtraBonus="2"></part>
+    <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
+    <stat Name="Hitpoints" Value="120"></stat>
+    <property Name="Role" Value="Hero"></property>
+    <xtagGrammar Proper="true"></xtagGrammar>
+    <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="LegendaryDogsGivesRep"></part>
+    <part Name="LegendaryDogsDogPack1"></part>
+    <stat Name="Level" Value="16"></stat>
+    <part Name="ActivatedAbilities" />
+    <part Name="Pettable" useFactionForFeelingFloor="Dogs" />
+    <tag Name="PetResponse" Value="enjoys your petting, and then barks at the animals nearby" />
+    <stat Name="Strength" Boost="1"></stat>
+    <stat Name="Agility" Boost="1"></stat>
+    <stat Name="Toughness" Boost="1"></stat>
+    <stat Name="Intelligence" Boost="1"></stat>
+    <stat Name="Willpower" Boost="1"></stat>
+    <stat Name="Ego" Boost="2"></stat>
+    <stat Name="AV" Value="5"></stat>
+    <skill Name="Pistol_MenacingStare"></skill>
+    <skill Name="Persuasion_InspiringPresence"></skill>
+  </object>
+
+  <object Name="LegendaryDogs_Guard_Dog" Inherits="Guard Dog">
+    <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
+    <part Name="Swarmer" ExtraBonus="2"></part>
+    <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
+    <stat Name="Hitpoints" Value="120"></stat>
+    <property Name="Role" Value="Hero"></property>
+    <xtagGrammar Proper="true"></xtagGrammar>
+    <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="LegendaryDogsGivesRep"></part>
+    <part Name="LegendaryDogsDogPack1"></part>
+    <stat Name="Level" Value="16"></stat>
+    <part Name="ActivatedAbilities" />
+    <part Name="Pettable" useFactionForFeelingFloor="Dogs" />
+    <tag Name="PetResponse" Value="enjoys your petting, and then growls at nothing in particular" />
+    <stat Name="Strength" Boost="1"></stat>
+    <stat Name="Agility" Boost="1"></stat>
+    <stat Name="Toughness" Boost="1"></stat>
+    <stat Name="Intelligence" Boost="1"></stat>
+    <stat Name="Willpower" Boost="1"></stat>
+    <stat Name="Ego" Boost="2"></stat>
+    <stat Name="AV" Value="5"></stat>
+    <skill Name="Pistol_MenacingStare"></skill>
+    <skill Name="Persuasion_InspiringPresence"></skill>
+  </object>
+  
+  <!--
     Worgs
   -->
   <object Name="LegendaryDogs_Worg_Bite" Inherits="NaturalWeapon">
@@ -25,7 +100,7 @@
     <stat Name="Ego" sValue="18,1d6"></stat>
     <stat Name="Level" Value="24"></stat>
     <stat Name="AV" Value="8"></stat>
-    <stat Name="Hitpoints" Value="60"></stat>
+    <stat Name="Hitpoints" Value="120"></stat>
     <stat Name="HeatResistance" Value="20"></stat>
     <stat Name="ColdResistance" Value="20"></stat>
     <stat Name="AcidResistance" Value="20"></stat>
@@ -35,6 +110,11 @@
     <skill Name="Axe_Cleave"></skill>
     <skill Name="Axe_Expertise" />
     <skill Name="Axe_Dismember" />
+    <skill Name="Acrobatics_Dodge" />
+    <skill Name="Acrobatics_SwiftReflexes" />
+    <skill Name="Acrobatics_Jump" />
+    <skill Name="Tactics_Juke" />
+    <skill Name="Acrobatics_Tumble" />
     <part Name="RandomMutations" Mental="1d2-1" MentalLevel="1d1"></part>
     <part Name="Description" Short="You look and see an animal, but you feel a person staring back.  =pronouns.Possessive= red eyes pierce your soul as you feel yourself almost slipping away, pulled deep into a swirling abyss of intelligence so foreign yet familiar and inviting."></part>
     <inventoryobject Blueprint="LegendaryDogs_Worg_Bite" Number="1"></inventoryobject>
@@ -69,6 +149,7 @@
     <tag Name="HeroNamePostfixAmount" Value="1" />
     <tag Name="HeroNameHyphenationChance" Value="0" />
     <tag Name="HeroTwoNameChance" Value="10" />
+    <stat Name="AV" Value="10"></stat>
     <stat Name="Hitpoints" Value="300" />
     <stat Name="Ego" Boost="2"></stat>
     <stat Name="Intelligence" Boost="1"></stat>
