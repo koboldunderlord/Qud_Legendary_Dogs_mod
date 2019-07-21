@@ -58,13 +58,13 @@
 
   <encountertable Name="Deathlands Creatures 1" Load="Merge">
     <objects>
-      <tableobject Chance="10" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
+      <population Chance="10" Number="1d1" Table="LegendaryDogsWorgEncounter"></population>
     </objects>
   </encountertable>
 
   <encountertable Name="Jungle" Load="Merge">
     <objects>
-      <tableobject Chance="2" Number="1d1" Table="LegendaryDogsWorgEncounter"></tableobject>
+      <population Chance="2" Number="1d1" Table="LegendaryDogsWorgEncounter"></population>
     </objects>
   </encountertable>
 
