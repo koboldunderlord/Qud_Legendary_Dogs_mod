@@ -15,77 +15,6 @@ namespace XRL.World.Parts
         public int GoodFactionPenalty;
         public string VeryGoodText;
 
-        public static string[] MessyLiquids = {
-            "blood-9999",
-            "sap-9999"
-        };
-
-        public static string[] Prefixes = {
-            "be",
-            "ba",
-            "ta",
-            "to",
-            "ru",
-            "ro",
-            "te",
-            "ta",
-            "da",
-            "du",
-            "di",
-            "do",
-            "u",
-            "a",
-            "i",
-            "pu"
-        };
-
-        public static string[] Infixes = {
-            "d",
-            "dd",
-            "m",
-            "mm",
-            "nn",
-            "n",
-            "p",
-            "pp",
-            "g",
-            "gg"
-        };
-
-        public static string[] Postfixes = {
-            "y",
-            "o",
-            "a",
-            "i",
-            "us"
-        };
-
-		public static string[] Titles = {
-            "Playful",
-            "Exciting",
-            "Funny",
-            "Clever",
-            "Soft",
-            "Loyal",
-            "Wild",
-            "Energetic",
-            "Loveable",
-            "Messy",
-            "Clueless",
-            "Happy",
-            "Simple",
-            "Loving",
-            "Content",
-            "Good",
-            "Caring",
-            "Fluffy",
-            "Smooth",
-            "Warm",
-            "Awkward",
-            "Floppy-tongued",
-            "Stub-tailed"
-        };
-
         public LegendaryDogsDogHero1()
         {
             base.Name = "LegendaryDogsDogHero1";
@@ -107,27 +36,6 @@ namespace XRL.World.Parts
             Object.RegisterPartEvent(this, "AfterLookedAt");
         }
 
-        public void ProcessGoodTitle(StringBuilder NameBuilder)
-        {
-            StringBuilder VeryGoodBuilder = new StringBuilder();
-            int Chance = Stat.RandomCosmetic(1, 2);
-            if (Chance == 2)
-            {
-                VeryGoodBuilder.Append("Very");
-                Chance = Stat.RandomCosmetic(1, 2);
-                while (Chance == 2)
-                {
-                    VeryGoodBuilder.Append(", Very");
-                    Chance = Stat.RandomCosmetic(1, 2);
-                }
-                VeryGoodBuilder.Append(" ");
-            }
-            VeryGoodBuilder.Append("Good");
-
-            VeryGoodText = VeryGoodBuilder.ToString().ToLower();
-            NameBuilder.Append(VeryGoodBuilder.ToString());
-        }
-
         public void AddModifiers()
         {
             if (ParentObject.DisplayName.Contains("Playful")
@@ -143,7 +51,7 @@ namespace XRL.World.Parts
               || ParentObject.DisplayName.Contains("Floppy-tongued"))
             {
                 Description Desc = ParentObject.GetPart<Description>();
-                Desc.Short = Desc.Short + " =pronouns.Subjective= seems very silly.";
+                Desc._Short = Desc._Short + " =pronouns.Subjective= seems very silly.";
 
             }
             else if (ParentObject.DisplayName.Contains("Clever"))
@@ -170,7 +78,7 @@ namespace XRL.World.Parts
             }
             else if (ParentObject.DisplayName.Contains("Messy"))
             {
-                ParentObject.MakeBloody(MessyLiquids.GetRandomElement());
+                ParentObject.MakeBloody(LegendaryDogsDogBuilder.MessyLiquids.GetRandomElement());
             }
             else if (ParentObject.DisplayName.Contains("Happy"))
             {
@@ -233,39 +141,14 @@ namespace XRL.World.Parts
                 }
                 bCreated = true;
 
-                StringBuilder NameBuilder = new StringBuilder();
-                NameBuilder.Append("&M");
-                string Prefix = Prefixes.GetRandomElement();
-                NameBuilder.Append(char.ToUpper(Prefix[0]));
-                NameBuilder.Append(Prefix.Substring(1));
-
-                if (Stat.RandomCosmetic(1, 2) == 2)
-                {
-                    NameBuilder.Append(Prefixes.GetRandomElement());
-                }
-                NameBuilder.Append(Infixes.GetRandomElement());
-                NameBuilder.Append(Postfixes.GetRandomElement());
-                NameBuilder.Append(" the ");
-                string Title = Titles.GetRandomElement();
+                string Title = LegendaryDogsDogBuilder.Titles.GetRandomElement();
                 if (Title == "Good")
                 {
-                    ProcessGoodTitle(NameBuilder);
+                    Title = LegendaryDogsDogBuilder.BuildGoodTitle();
+                    VeryGoodText = Title.ToLower();
                 }
-                else
-                {
-                    NameBuilder.Append(Title);
-                }
-                string[] DisplayName = ParentObject.DisplayName.Split(' ');
-                foreach (string s in DisplayName)
-                {
-                    NameBuilder.Append(" ");
-                    NameBuilder.Append(s.Substring(0, 1).ToUpper());
-                    NameBuilder.Append(s.Substring(1));
-                }
-
-                ParentObject.DisplayName = NameBuilder.ToString();
+                ParentObject.DisplayName = LegendaryDogsDogBuilder.BuildName(ParentObject.DisplayName, Title);
                 AddModifiers();
-                ParentObject.FireEvent(Event.New("LegendaryDogsDisplayNameSet"));
             }
             else if (E.ID == "BeforeDeathRemoval" && this.GoodFactionPenalty > 0)
             {

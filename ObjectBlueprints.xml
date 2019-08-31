@@ -11,6 +11,7 @@
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
@@ -33,12 +34,13 @@
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
     <part Name="ActivatedAbilities" />
     <part Name="Pettable" useFactionForFeelingFloor="Dogs" />
-    <tag Name="PetResponse" Value="enjoys your petting, and then barks at the animals nearby" />
+    <tag Name="PetResponse" Value="enjoys your petting and then barks at the animals nearby" />
     <stat Name="Strength" Boost="1"></stat>
     <stat Name="Agility" Boost="1"></stat>
     <stat Name="Toughness" Boost="1"></stat>
@@ -58,6 +60,7 @@
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
+    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
@@ -129,6 +132,7 @@
     <part Name="Swarmer" ExtraBonus="4"></part>
     <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
     <part Name="GivesRep"></part>
+    <part Name="LegendaryDogsWorgGivesRep"></part>
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsWorgPack1"></part>

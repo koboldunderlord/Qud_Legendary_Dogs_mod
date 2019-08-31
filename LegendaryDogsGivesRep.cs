@@ -1,23 +1,24 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic;   
+using XRL.UI;
 
 namespace XRL.World.Parts
 {
-    [Serializable]
-    public class LegendaryDogsGivesRep : GivesRep
+    public class LegendaryDogsGivesRep : IPart
     {
     	public override void Register(GameObject Object)
 		{
-			Object.RegisterPartEvent(this, "LegendaryDogsDisplayNameSet");
+			Object.RegisterPartEvent(this, "ObjectCreated");
 			base.Register(Object);
 		}
 
-        public new int FillInRelatedFactions(bool Initial = false)
+        public void ReplaceFactions()
         {
         	LegendaryDogsDogHero1 HeroPart = ParentObject.GetPart<LegendaryDogsDogHero1>();
+            GivesRep GivesRepPart = ParentObject.GetPart<GivesRep>();
             if (HeroPart.GoodFactionPenalty > 0)
             {
-            	IPart.AddPlayerMessage("we're in!");
+                GivesRepPart.ResetRelatedFactions();
                 foreach (KeyValuePair<string, FactionInfo> Faction in Factions.FactionList)
                 {
                     if (Faction.Value.bVisible && !ParentObject.pBrain.FactionMembership.ContainsKey(Faction.Value.Name))
@@ -26,29 +27,24 @@ namespace XRL.World.Parts
                         FoF.faction = Faction.Value.Name;
                         FoF.status = "friend";
                         FoF.reason = "for being a " + HeroPart.VeryGoodText + " dog";
-                        relatedFactions.Add(FoF);
+                        GivesRepPart.relatedFactions.Add(FoF);
                         if (ParentObject.pBrain.FactionFeelings.ContainsKey(Faction.Value.Name))
 						{
-							if (Initial)
-							{
-								Dictionary<string, int> factionFeelings = ParentObject.pBrain.FactionFeelings;
-								factionFeelings[Faction.Value.Name] += 100;
-							}
+							Dictionary<string, int> factionFeelings = ParentObject.pBrain.FactionFeelings;
+							factionFeelings[Faction.Value.Name] += HeroPart.GoodFactionPenalty;
 						}
 						else
 						{
-							ParentObject.pBrain.FactionFeelings.Add(Faction.Value.Name, 100);
+							ParentObject.pBrain.FactionFeelings.Add(Faction.Value.Name, HeroPart.GoodFactionPenalty);
 						}
                     }
                 }
-                repValue = HeroPart.GoodFactionPenalty;
-                return relatedFactions.Count;
+                GivesRepPart.repValue = HeroPart.GoodFactionPenalty;
             } else
             {
-                int Count = base.FillInRelatedFactions(Initial);
-                for (int i = 0; i < relatedFactions.Count; i++) 
+                for (int i = 0; i < GivesRepPart.relatedFactions.Count; i++) 
                 {
-                	FriendorFoe FoF = relatedFactions[i];
+                	FriendorFoe FoF = GivesRepPart.relatedFactions[i];
                 	if (FoF.status == "friend")
                 	{
                 		FoF.reason = LegendaryDogsGenerateFriendOrFoe.getLikeReason();
@@ -56,23 +52,16 @@ namespace XRL.World.Parts
                 		FoF.reason = LegendaryDogsGenerateFriendOrFoe.getHateReason();
                 	}
                 }
-
-                
-                return Count;
             }
         }
 
         public override bool FireEvent(Event E)
 		{
-			if (E.ID == "FactionsAdded")
-			{
-				// Do nothing - wait for ObjectCreated
-				return true;
-			} else if (E.ID == "LegendaryDogsDisplayNameSet") 
-			{
-				FillInRelatedFactions(Initial: true);
-				return true;
-			}
+			if (E.ID == "ObjectCreated")
+            {
+                ReplaceFactions();
+                ParentObject.RemovePart(this);
+            }
 			return base.FireEvent(E);
 		}
     }

@@ -14,8 +14,8 @@ namespace XRL.World.Parts
 	{
 		public bool bCreated;
 
-		public static string[] Prefixes = new string[16]
-		{
+		public static string[] Prefixes =
+        {
 			"be",
 			"ba",
 			"ta",
@@ -34,8 +34,8 @@ namespace XRL.World.Parts
 			"pu"
 		};
 
-		public static string[] Infixes = new string[10]
-		{
+		public static string[] Infixes =
+        {
 			"d",
 			"dd",
 			"m",
@@ -48,7 +48,7 @@ namespace XRL.World.Parts
 			"gg"
 		};
 
-		public static string[] Postfixes = new string[5]
+		public static string[] Postfixes = 
 		{
 			"y",
 			"o",
