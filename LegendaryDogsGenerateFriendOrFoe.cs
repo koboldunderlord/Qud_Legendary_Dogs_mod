@@ -78,15 +78,7 @@ namespace XRL.World.Parts
 
 		public static string getRandomFaction(GameObject parent)
 		{
-			List<string> list = new List<string>(Factions.FactionList.Count);
-			foreach (KeyValuePair<string, FactionInfo> Faction in Factions.FactionList)
-			{
-				if (Faction.Value.bVisible && !parent.pBrain.FactionMembership.ContainsKey(Faction.Key))
-				{
-					list.Add(Faction.Key);
-				}
-			}
-			return list.GetRandomElement();
+            return GenerateFriendOrFoe.getRandomFaction(parent);
 		}
 	}
 }

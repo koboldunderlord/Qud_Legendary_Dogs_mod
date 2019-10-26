@@ -19,23 +19,23 @@ namespace XRL.World.Parts
             if (HeroPart.GoodFactionPenalty > 0)
             {
                 GivesRepPart.ResetRelatedFactions();
-                foreach (KeyValuePair<string, FactionInfo> Faction in Factions.FactionList)
+                foreach (FactionInfo Faction in Factions.loop())
                 {
-                    if (Faction.Value.bVisible && !ParentObject.pBrain.FactionMembership.ContainsKey(Faction.Value.Name))
+                    if (Faction.bVisible && !ParentObject.pBrain.FactionMembership.ContainsKey(Faction.Name))
                     {
                         FriendorFoe FoF = new FriendorFoe();
-                        FoF.faction = Faction.Value.Name;
+                        FoF.faction = Faction.Name;
                         FoF.status = "friend";
                         FoF.reason = "for being a " + HeroPart.VeryGoodText + " dog";
                         GivesRepPart.relatedFactions.Add(FoF);
-                        if (ParentObject.pBrain.FactionFeelings.ContainsKey(Faction.Value.Name))
+                        if (ParentObject.pBrain.FactionFeelings.ContainsKey(Faction.Name))
 						{
 							Dictionary<string, int> factionFeelings = ParentObject.pBrain.FactionFeelings;
-							factionFeelings[Faction.Value.Name] += HeroPart.GoodFactionPenalty;
+							factionFeelings[Faction.Name] += HeroPart.GoodFactionPenalty;
 						}
 						else
 						{
-							ParentObject.pBrain.FactionFeelings.Add(Faction.Value.Name, HeroPart.GoodFactionPenalty);
+							ParentObject.pBrain.FactionFeelings.Add(Faction.Name, HeroPart.GoodFactionPenalty);
 						}
                     }
                 }
