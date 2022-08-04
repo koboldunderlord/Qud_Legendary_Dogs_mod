@@ -1,4 +1,4 @@
-# Qud_Legendary_Dogs_mod
+# Caves of Qud Mod: Legendary Dogs
 A mod that introduces more dog breeds &amp; allows legendary dogs to spawn.
 
 You can find it on Steam here: https://steamcommunity.com/sharedfiles/filedetails/?id=1802123778
