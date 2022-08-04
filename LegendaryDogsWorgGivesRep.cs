@@ -1,41 +1,46 @@
 using System;
 using System.Collections.Generic;   
 using XRL.UI;
+using XRL.Messages;
 
 namespace XRL.World.Parts
 {
-    public class LegendaryDogsWorgGivesRep : IPart
+    public class LegendaryDogsWorgGivesRep : GivesRep
     {
-    	public override void Register(GameObject Object)
-		{
-			Object.RegisterPartEvent(this, "ObjectCreated");
-			base.Register(Object);
-		}
+        public bool FixedRep;
 
-        public void ReplaceFactions()
+        public override void Register(GameObject Object)
         {
-        	LegendaryDogsWorgHero1 HeroPart = ParentObject.GetPart<LegendaryDogsWorgHero1>();
-            GivesRep GivesRepPart = ParentObject.GetPart<GivesRep>();
-            for (int i = 0; i < GivesRepPart.relatedFactions.Count; i++) 
+            FixedRep = false;
+            base.Register(Object);
+        }
+        
+        public void ReplaceFactions() 
+        {
+            GivesRep RepPart = this;
+            GameObject dog = ParentObject;
+            LegendaryDogsWorgHero1 HeroPart = dog.GetPart<LegendaryDogsWorgHero1>();
+                
+            foreach (FriendorFoe FoF in RepPart.relatedFactions) 
             {
-            	FriendorFoe FoF = GivesRepPart.relatedFactions[i];
-            	if (FoF.status == "friend")
-            	{
-            		FoF.reason = LegendaryDogsGenerateFriendOrFoe.getLikeReason();
-            	} else {
-            		FoF.reason = LegendaryDogsGenerateFriendOrFoe.getHateReason();
-            	}
+                if (FoF.status == "friend")
+                {
+                    MessageQueue.AddPlayerMessage("like");
+                    FoF.reason = LegendaryDogsGenerateFriendOrFoe.getLikeReason();
+                } else {
+                    MessageQueue.AddPlayerMessage("dislike");
+                    FoF.reason = LegendaryDogsGenerateFriendOrFoe.getHateReason();
+                }
             }
         }
 
-        public override bool FireEvent(Event E)
-		{
-			if (E.ID == "ObjectCreated")
-            {
+        public override bool HandleEvent(GetShortDescriptionEvent E)
+        {
+            if (!FixedRep) {
                 ReplaceFactions();
-                ParentObject.RemovePart(this);
+                FixedRep = true;
             }
-			return base.FireEvent(E);
-		}
+            return base.HandleEvent(E);
+        }
     }
 }

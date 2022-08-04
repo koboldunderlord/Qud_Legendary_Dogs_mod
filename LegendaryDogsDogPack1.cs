@@ -18,7 +18,6 @@ namespace XRL.World.Parts
         //
         public LegendaryDogsDogPack1()
         {
-            base.Name = "LegendaryDogsDogPack1";
         }
 
         //

@@ -4,9 +4,11 @@ using System.Text;
 using XRL.Core;
 using XRL.Rules;
 using XRL.UI;
-using XRL.World.Parts.Effects;
+using XRL.World.Effects;
+using XRL.World.Parts;
+using XRL.Messages;
 
-namespace XRL.World
+namespace XRL.World.Encounters.EncounterObjectBuilders
 {
     public class LegendaryDogsDogBuilder
     {
@@ -129,6 +131,123 @@ namespace XRL.World
                 NameBuilder.Append(s.Substring(1));
             }
             return NameBuilder.ToString();
+        }
+
+        public static void AddModifiers(GameObject dog)
+        {
+            if (dog.DisplayName.Contains("Playful")
+                || dog.DisplayName.Contains("Energetic")
+                || dog.DisplayName.Contains("Exciting")
+                || dog.DisplayName.Contains("Wild"))
+            {
+                dog.Statistics["MoveSpeed"].BaseValue += Stat.Random(5, 15);
+            }
+            else if (dog.DisplayName.Contains("Funny")
+              || dog.DisplayName.Contains("Awkward")
+              || dog.DisplayName.Contains("Clueless")
+              || dog.DisplayName.Contains("Floppy-tongued"))
+            {
+                Description Desc = dog.GetPart<Description>();
+                Desc._Short = Desc._Short + " =pronouns.Subjective= seems very silly.";
+
+            }
+            else if (dog.DisplayName.Contains("Clever"))
+            {
+                if (!dog.HasPart("LegendaryDogsWaterFinder"))
+                {
+                    dog.AddPart<LegendaryDogsWaterFinder>(new LegendaryDogsWaterFinder(), true);
+                }
+            }
+            else if (dog.DisplayName.Contains("Soft"))
+            {
+                if (!dog.HasPart("LegendaryDogsPetTitlePart"))
+                {
+                    dog.AddPart<LegendaryDogsPetTitlePart>(new LegendaryDogsPetTitlePart(), true);
+                }
+            }
+            else if (dog.DisplayName.Contains("Loyal"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Loveable"))
+            {
+                // handled via effects
+            }
+            else if (dog.DisplayName.Contains("Messy"))
+            {
+                dog.MakeBloody(MessyLiquids.GetRandomElement());
+            }
+            else if (dog.DisplayName.Contains("Happy"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Simple"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Loving"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Content"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Good"))
+            {
+                LegendaryDogsDogHero1 heroPart = dog.GetPart<LegendaryDogsDogHero1>();
+                heroPart.GoodFactionPenalty = 100 + 25 * (dog.DisplayName.Split(new[] { "Very" }, StringSplitOptions.None).Length - 1);
+            }
+            else if (dog.DisplayName.Contains("Caring"))
+            {
+                // nothing
+            }
+            else if (dog.DisplayName.Contains("Fluffy"))
+            {
+                if (!dog.HasPart("LegendaryDogsPetTitlePart"))
+                {
+                    dog.AddPart<LegendaryDogsPetTitlePart>(new LegendaryDogsPetTitlePart("fluffy"), true);
+                }
+            }
+            else if (dog.DisplayName.Contains("Smooth"))
+            {
+                if (!dog.HasPart("LegendaryDogsPetTitlePart"))
+                {
+                    dog.AddPart<LegendaryDogsPetTitlePart>(new LegendaryDogsPetTitlePart("smooth"), true);
+                }
+            }
+            else if (dog.DisplayName.Contains("Warm"))
+            {
+                if (!dog.HasPart("LegendaryDogsPetTitlePart"))
+                {
+                    dog.AddPart<LegendaryDogsPetTitlePart>(new LegendaryDogsPetTitlePart("warm"), true);
+                }
+            }
+            else if (dog.DisplayName.Contains("Stub-tailed"))
+            {
+                // nothing
+            }
+        }
+
+        
+
+        public bool BuildObject(GameObject dog, string Context = null)
+        {
+            string Title = Titles.GetRandomElement();
+            if (Title == "Good")
+            {
+                Title = BuildGoodTitle();
+                LegendaryDogsDogHero1 heroPart = dog.GetPart<LegendaryDogsDogHero1>();
+                heroPart.VeryGoodText = Title.ToLower();
+            }
+            string name = BuildName(dog.DisplayName, Title);
+            dog.DisplayName = name;
+
+            AddModifiers(dog);
+
+            dog.HasProperName = true;
+
+            return true;
         }
     }
 }

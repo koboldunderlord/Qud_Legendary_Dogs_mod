@@ -7,11 +7,10 @@
     <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
     <part Name="Swarmer" ExtraBonus="2"></part>
     <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
-    <stat Name="Hitpoints" Value="80"></stat>
+    <stat Name="Hitpoints" Value="40"></stat>
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
-    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
@@ -24,17 +23,17 @@
     <stat Name="Willpower" Boost="1"></stat>
     <stat Name="Ego" Boost="2"></stat>
     <skill Name="Persuasion_InspiringPresence"></skill>
+    <builder Name="LegendaryDogsDogBuilder" />
   </object>
 
   <object Name="LegendaryDogs_HerdingDog" Inherits="Herding Dog">
     <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
     <part Name="Swarmer" ExtraBonus="2"></part>
     <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
-    <stat Name="Hitpoints" Value="120"></stat>
+    <stat Name="Hitpoints" Value="60"></stat>
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
-    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
@@ -48,19 +47,19 @@
     <stat Name="Willpower" Boost="1"></stat>
     <stat Name="Ego" Boost="2"></stat>
     <stat Name="AV" Value="5"></stat>
-    <skill Name="Pistol_MenacingStare"></skill>
+    <skill Name="Persuasion_MenacingStare"></skill>
     <skill Name="Persuasion_InspiringPresence"></skill>
+    <builder Name="LegendaryDogsDogBuilder" />
   </object>
 
   <object Name="LegendaryDogs_Guard_Dog" Inherits="Guard Dog">
     <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
     <part Name="Swarmer" ExtraBonus="2"></part>
     <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
-    <stat Name="Hitpoints" Value="120"></stat>
+    <stat Name="Hitpoints" Value="80"></stat>
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsDogHero1"></part>
-    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsGivesRep"></part>
     <part Name="LegendaryDogsDogPack1"></part>
     <stat Name="Level" Value="16"></stat>
@@ -74,8 +73,9 @@
     <stat Name="Willpower" Boost="1"></stat>
     <stat Name="Ego" Boost="2"></stat>
     <stat Name="AV" Value="5"></stat>
-    <skill Name="Pistol_MenacingStare"></skill>
+    <skill Name="Persuasion_MenacingStare"></skill>
     <skill Name="Persuasion_InspiringPresence"></skill>
+    <builder Name="LegendaryDogsDogBuilder" />
   </object>
   
   <!--
@@ -131,12 +131,10 @@
     <part Name="Render" RenderString="W" ColorString="&amp;m" DetailColor="R"></part>
     <part Name="Swarmer" ExtraBonus="4"></part>
     <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
-    <part Name="GivesRep"></part>
     <part Name="LegendaryDogsWorgGivesRep"></part>
     <property Name="Role" Value="Hero"></property>
     <xtagGrammar Proper="true"></xtagGrammar>
     <part Name="LegendaryDogsWorgPack1"></part>
-    <part Name="LegendaryDogsWorgHero1"></part>
     <skill Name="Tactics_Charge"></skill>
     <skill Name="Tactics_Run"></skill>
     <stat Name="Level" Value="30"></stat>
@@ -158,5 +156,6 @@
     <stat Name="Ego" Boost="2"></stat>
     <stat Name="Intelligence" Boost="1"></stat>
     <stat Name="Willpower" Boost="1"></stat>
+    <builder Name="LegendaryDogsWorgBuilder" />
   </object>
 </objects>

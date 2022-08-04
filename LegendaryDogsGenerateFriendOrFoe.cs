@@ -4,7 +4,7 @@ using XRL.Language;
 
 namespace XRL.World.Parts
 {
-	public class LegendaryDogsGenerateFriendOrFoe : GenerateFriendOrFoe
+	public class LegendaryDogsGenerateFriendOrFoe
 	{
 		private static List<string> _hateReasons;
 
@@ -74,11 +74,6 @@ namespace XRL.World.Parts
 		public static string getLikeReason()
 		{
 			return _likeReasons.GetRandomElement().Replace("$noun", Grammar.Pluralize(HistoricStringExpander.ExpandString("<spice.nouns.!random>")));
-		}
-
-		public static string getRandomFaction(GameObject parent)
-		{
-            return GenerateFriendOrFoe.getRandomFaction(parent);
 		}
 	}
 }
