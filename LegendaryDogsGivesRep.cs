@@ -20,9 +20,10 @@ namespace XRL.World.Parts
         {
             GivesRep RepPart = this;
             GameObject dog = ParentObject;
+
             LegendaryDogsDogHero1 HeroPart = dog.GetPart<LegendaryDogsDogHero1>();
 
-            if (HeroPart.GoodFactionPenalty > 0)
+            if (ParentObject.DisplayName.Contains("Good"))
             {
                 RepPart.ResetRelatedFactions();
                 foreach (Faction Faction in Factions.loop())
@@ -32,7 +33,7 @@ namespace XRL.World.Parts
                         FriendorFoe FoF = new FriendorFoe();
                         FoF.faction = Faction.Name;
                         FoF.status = "friend";
-                        FoF.reason = "for being a " + HeroPart.VeryGoodText + " dog";
+                        FoF.reason = "for being a " + HeroPart.Title + " dog";
                         RepPart.relatedFactions.Add(FoF);
                         if (dog.pBrain.FactionFeelings.ContainsKey(Faction.Name))
                         {

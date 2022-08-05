@@ -19,7 +19,6 @@ namespace XRL.World.Parts
         {
             GivesRep RepPart = this;
             GameObject dog = ParentObject;
-            LegendaryDogsWorgHero1 HeroPart = dog.GetPart<LegendaryDogsWorgHero1>();
                 
             foreach (FriendorFoe FoF in RepPart.relatedFactions) 
             {
@@ -34,13 +33,13 @@ namespace XRL.World.Parts
             }
         }
 
-        public override bool HandleEvent(GetShortDescriptionEvent E)
-        {
-            if (!FixedRep) {
-                ReplaceFactions();
-                FixedRep = true;
-            }
-            return base.HandleEvent(E);
-        }
+public override bool HandleEvent(GetShortDescriptionEvent E)
+{
+    if (!FixedRep) {
+        ReplaceFactions();
+        FixedRep = true;
+    }
+    return base.HandleEvent(E);
+}
     }
 }

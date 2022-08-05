@@ -87,12 +87,23 @@ namespace XRL.World.Encounters.EncounterObjectBuilders
             "Stub-tailed"
         };
 
+        public static string BuildTitle()
+        {
+            string Title = Titles.GetRandomElement();
+            if (Title == "Good") 
+            {
+                Title = BuildGoodTitle();
+            }
+            return Title;
+        }
+
         public static string BuildGoodTitle()
         {
             StringBuilder VeryGoodBuilder = new StringBuilder();
             int Chance = Stat.RandomCosmetic(1, 2);
             if (Chance == 2)
             {
+                MessageQueue.AddPlayerMessage("Very");
                 VeryGoodBuilder.Append("Very");
                 Chance = Stat.RandomCosmetic(1, 2);
                 while (Chance == 2)
@@ -233,18 +244,6 @@ namespace XRL.World.Encounters.EncounterObjectBuilders
 
         public bool BuildObject(GameObject dog, string Context = null)
         {
-            string Title = Titles.GetRandomElement();
-            if (Title == "Good")
-            {
-                Title = BuildGoodTitle();
-                LegendaryDogsDogHero1 heroPart = dog.GetPart<LegendaryDogsDogHero1>();
-                heroPart.VeryGoodText = Title.ToLower();
-            }
-            string name = BuildName(dog.DisplayName, Title);
-            dog.DisplayName = name;
-
-            AddModifiers(dog);
-
             dog.HasProperName = true;
 
             return true;
