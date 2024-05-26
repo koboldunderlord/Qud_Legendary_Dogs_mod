@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using XRL.UI;
 using XRL.World;
 using XRL.Messages;
+using XRL.Collections;
 
 namespace XRL.World.Parts
 {
@@ -28,7 +29,7 @@ namespace XRL.World.Parts
                 RepPart.ResetRelatedFactions();
                 foreach (Faction Faction in Factions.loop())
                 {
-                    if (Faction.Visible && !dog.pBrain.FactionMembership.ContainsKey(Faction.Name))
+                    if (Faction.Visible && !dog.pBrain.Allegiance.ContainsKey(Faction.Name))
                     {
                         FriendorFoe FoF = new FriendorFoe();
                         FoF.faction = Faction.Name;
@@ -37,7 +38,7 @@ namespace XRL.World.Parts
                         RepPart.relatedFactions.Add(FoF);
                         if (dog.pBrain.FactionFeelings.ContainsKey(Faction.Name))
                         {
-                            Dictionary<string, int> factionFeelings = dog.pBrain.FactionFeelings;
+                            StringMap<int> factionFeelings = dog.pBrain.FactionFeelings;
                             factionFeelings[Faction.Name] += HeroPart.GoodFactionPenalty;
                         }
                         else

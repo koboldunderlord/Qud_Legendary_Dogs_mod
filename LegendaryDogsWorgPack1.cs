@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using XRL.Core;
 using XRL.Rules;
-using XRL.World.Encounters.EncounterObjectBuilders;
+using XRL.World.ObjectBuilders;
 
 namespace XRL.World.Parts
 {
@@ -19,7 +19,7 @@ namespace XRL.World.Parts
 		//
 		public LegendaryDogsWorgPack1 ()
 		{
-			base.Name = "LegendaryDogsWorgPack1";
+			base.SetName("LegendaryDogsWorgPack1");
 		}
 
 		//
@@ -52,7 +52,7 @@ namespace XRL.World.Parts
 					int worgIterator = 0;
 					while (worgIterator < randomWorgs.Count && emptyCellList.Count > 0) {
 						GameObject gameObject = GameObjectFactory.Factory.CreateObject (randomWorgs [worgIterator]);
-						tier1HumanoidEquipment.BuildObject (gameObject, null);
+						tier1HumanoidEquipment.Apply (gameObject, null);
 						gameObject.GetPart<Brain> ().PartyLeader = this.ParentObject;
 						Cell randomElement = emptyCellList.GetRandomElement (null);
 						randomElement.AddObject (gameObject);
