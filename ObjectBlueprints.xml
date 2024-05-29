@@ -3,6 +3,35 @@
   <!--
     Dogs
   -->
+  <object Name="Megabit_LegendaryDogs" Inherits="Dog">
+    <part Name="Render" DisplayName="Megabit" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
+    <tag Name="InventoryPopulationTable" Value="LegendaryDogsWorgHeroInventory"></tag>
+    <stat Name="Hitpoints" Value="40"></stat>
+    <property Name="Role" Value="Hero"></property>
+    <xtagGrammar Proper="true"></xtagGrammar>
+    <stat Name="Level" Value="16"></stat>
+    <part Name="Pettable" useFactionForFeelingFloor="Barathrumites" />
+    <tag Name="PetResponse" Value="sighs wistfully at you.  You're pretty sure he wants a treat." />
+    <part Name="Description" Short="A very silly looking boy.  He appears to want treats and pets.  You're pretty sure you saw him on Q Girl's gaming stream once." />
+    <stat Name="Strength" Boost="3"></stat>
+    <stat Name="Agility" Boost="3"></stat>
+    <stat Name="Toughness" Boost="3"></stat>
+    <stat Name="Intelligence" Boost="3"></stat>
+    <stat Name="Willpower" Boost="3"></stat>
+    <stat Name="Ego" Boost="5"></stat>
+    <skill Name="Persuasion_InspiringPresence"></skill>
+    <tag Name="staticFaction3" Value=",friend,being a very cute mascot" />
+    <tag Name="staticFaction2" Value=",friend,sighing so wistfully it was immediately relatable" />
+    <tag Name="staticFaction1" Value="Templars,hate,eating the phylactery of a famous Templar" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    <tag Name="Gender" Value="male" />
+    <tag Name="PronounSet" Value="he/him" />
+    <xtagGrammar Proper="true" />
+    <tag Name="ReturnToGritGateAfterAttack" Value="32,11" />
+    <inventoryobject Blueprint="BarathrumiteSafetyBand" Number="1" CellChance="100" CellFullChance="100" CellType="Chem Cell" />
+    <property Name="WontSell" Value="BarathrumiteSafetyBand" />
+  </object>
+  
   <object Name="LegendaryDogs_Dog" Inherits="Dog">
     <part Name="Render" RenderString="D" ColorString="&amp;m" DetailColor="R"></part>
     <part Name="Swarmer" ExtraBonus="2"></part>
